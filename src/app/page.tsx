@@ -1,7 +1,37 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <h1>hello world</h1>
+    <div className="relative min-h-screen flex items-center justify-center">
+      <video
+        width={1920}
+        height={580}
+        preload="none"
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/animation.mp4" type="video/mp4" />
+      </video>
+      <div className="relative flex flex-col items-center my-auto z-10">
+        <h1 className="font-unkempt font-bold text-5xl pb-2 text-center">
+          Everything your team needs.
+          <br /> One place.
+        </h1>
+        <h2 className="text-muted-foreground text-sm">
+          Organize documents, capture knowledge, and collaborate without the
+          chaos.
+        </h2>
+        <Button
+          variant="default"
+          className="cursor-pointer rounded-full bg-black hover:bg-black/70 border border-grey/10 px-6 py-5 my-4 text-md"
+        >
+          <Link href="/register">Get Started</Link>
+        </Button>
+      </div>
+    </div>
   );
 }
