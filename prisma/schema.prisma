@@ -17,13 +17,50 @@ enum UserRole {
   ADMIN
 }
 
+enum WorkspaceType {
+  PERSONAL
+  TEAM
+}
+
+enum WorkspaceRole {
+  OWNER
+  ADMIN
+  MEMBER
+}
+
 model User {
-  id           String   @id @default(uuid())
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  firstName    String   @db.VarChar(255)
-  lastName     String   @db.VarChar(255)
-  email        String   @unique @db.VarChar(255)
-  passwordHash String?  @db.VarChar(255)
-  role         UserRole @default(USER)
+  id           String             @id @default(uuid())
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+  firstName    String             @db.VarChar(255)
+  lastName     String             @db.VarChar(255)
+  email        String             @unique @db.VarChar(255)
+  passwordHash String?            @db.VarChar(255)
+  role         UserRole           @default(USER)
+  memberships  WorkspaceMember[]
+}
+
+model Workspace {
+  id        String             @id @default(uuid())
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+  name      String             @db.VarChar(255)
+  type      WorkspaceType      @default(PERSONAL)
+  members   WorkspaceMember[]
+}
+
+model WorkspaceMember {
+  id          String        @id @default(uuid())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  role        WorkspaceRole @default(MEMBER)
+  userId      String
+  workspaceId String
+
+  user      User      @relation(fields: [userId], references: [id])
+  workspace Workspace @relation(fields: [workspaceId], references: [id])
+
+  @@unique([userId, workspaceId])
+  @@index([userId])
+  @@index([workspaceId])
 }
