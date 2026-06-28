@@ -5,7 +5,7 @@ import Link from "next/link";
 export default async function Home() {
   const cookieStore = await cookies();
   const token = cookieStore.get('dochub')
-  const href =  token ? "/dashboard": "/login"
+  const href =  token ? "/workspace": "/login"
 
   return (
     <div className="relative min-h-screen flex items-center justify-center">

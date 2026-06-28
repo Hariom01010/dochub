@@ -47,7 +47,7 @@ export const loginUser = async (data: LoginUserInput) => {
     throw new Error("JWT_SECRET is not configured");
   }
   const token = jwt.sign(
-    { userId: user.id, email: user.email, role: user.role },
+    { firstName: user.firstName, lastName: user.lastName, userId: user.id, email: user.email, role: user.role },
     secret,
     { expiresIn: "3d" },
   );

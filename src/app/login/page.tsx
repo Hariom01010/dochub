@@ -27,7 +27,7 @@ export default function Page() {
     try {
       const res = await axios.post("/api/auth/login", formData);
       if(res.status === 200) {
-        router.push('/dashboard')
+        router.push('/workspace')
       }
       console.log(res.data);
     } catch (err) {
@@ -37,7 +37,7 @@ export default function Page() {
 
   return (
     <div className="relative flex justify-center items-center min-h-screen rounded-md">
-      <video
+      {/* <video
         width={1920}
         height={580}
         preload="none"
@@ -48,7 +48,7 @@ export default function Page() {
         className="absolute inset-0 w-full h-full object-cover"
       >
         <source src="/animation.mp4" type="video/mp4" />
-      </video>
+      </video> */}
       <div className="flex w-175 min-h-90">
         <Card className="rounded-r-none z-10 flex-1">
           <CardHeader>
