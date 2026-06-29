@@ -9,18 +9,6 @@ export default async function Home() {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center">
-      <video
-        width={1920}
-        height={580}
-        preload="none"
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/animation.mp4" type="video/mp4" />
-      </video>
       <div className="relative flex flex-col items-center my-auto z-10">
         <h1 className="font-unkempt font-bold text-5xl pb-2 text-center">
           Everything your team needs.
