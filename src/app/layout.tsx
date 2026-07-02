@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { unkempt } from "@/lib/fonts";
 const outfitHeading = Outfit({subsets:['latin'],variable:'--font-heading'});
 
-const nunitoSans = Nunito_Sans({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", nunitoSans.variable, outfitHeading.variable, unkempt.variable)}
+      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable, outfitHeading.variable, unkempt.variable)}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
